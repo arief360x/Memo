@@ -3,5 +3,29 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index for Memo</h1>
+<h1>Your Memo</h1>
+<table class = "table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Content</th>
+            <th>Last Modified</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="30%">
+                    @obj.MemoCategory
+                </td>
+                <td width="55%">
+                    @obj.MemoContent
+                </td>
+                <td widht="15%">
+                    @obj.MemoCreatedTime.ToString("ddd, dd MMM yyy HH':'mm")
+            </tr>
+        }
+    </tbody>
+</table>
 
