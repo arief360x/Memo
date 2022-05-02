@@ -1,0 +1,28 @@
+﻿@model MemoModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Memo</h1>
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h1 class="text-primary" Create Memo></h1>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="MemoCategory"></label>
+            <input asp-for="MemoCategory" class="form-control" />
+
+            <label asp-for="MemoContent"></label>
+            <input asp-for="MemoContent" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px" asp-action="CreateMemo">Create</button>
+        <button class="btn btn-secondary" style="width:150px" asp-controller="Memo" asp-action="Index">Back to List</button> 
+    </div>
+
+
+</form>
+
