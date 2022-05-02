@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NotesWeb.Data;
 using NotesWeb.Models;
-
 namespace NotesWeb.Controllers
 {
     public class MemoController : Controller
@@ -17,6 +16,12 @@ namespace NotesWeb.Controllers
         {
             IEnumerable<MemoModel> objMemoList = _db.Memos;
             return View(objMemoList);
+        }
+
+        // Open page for creating memo
+        public IActionResult Create()
+        {
+            return View();
         }
     }
 }
