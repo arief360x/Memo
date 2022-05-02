@@ -23,5 +23,12 @@ namespace NotesWeb.Controllers
         {
             return View();
         }
+        //Post the memo
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateMemo(MemoModel obj)
+        {
+            return View();
+        }
     }
 }
