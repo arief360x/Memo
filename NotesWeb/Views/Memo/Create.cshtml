@@ -15,14 +15,24 @@
         <div class="mb-3">
             <label asp-for="MemoCategory"></label>
             <input asp-for="MemoCategory" class="form-control" />
+            <span asp-validation-for="MemoCategory" class="text-danger"></span>
 
             <label asp-for="MemoContent"></label>
             <input asp-for="MemoContent" class="form-control" />
+            <span asp-validation-for="MemoContent" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px" asp-action="CreateMemo">Create</button>
-        <button class="btn btn-secondary" style="width:150px" asp-controller="Memo" asp-action="Index">Back to List</button> 
+        <button type="submit" class="btn btn-primary" style="width:150px" asp-action="Create">Create</button>
+        <button class="btn btn-secondary" style="width:150px" asp-controller="Memo" asp-action="Index">Back to List</button>
+        
     </div>
 
 
 </form>
+
+@section Scripts{
+    @{
+      <partial name="_ValidationScriptsPartial" />  
+    }
+}
+
 
