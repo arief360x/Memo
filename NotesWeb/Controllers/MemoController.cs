@@ -26,9 +26,15 @@ namespace NotesWeb.Controllers
         //Post the memo
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateMemo(MemoModel obj)
+        public IActionResult Create(MemoModel obj)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _db.Memos.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
         }
     }
 }
