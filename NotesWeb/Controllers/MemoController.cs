@@ -36,5 +36,36 @@ namespace NotesWeb.Controllers
             }
             return View(obj);
         }
+
+
+        //Open page for editing
+        public IActionResult Edit(int? id)
+        {
+            if (id== null)
+            {
+                return NotFound();
+            }
+
+            var content = _db.Memos.Find(id);
+            if (content == null)
+            {
+                return NotFound();
+            }
+
+            return View(content);
+        }
+        //Post the memo after editing
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(MemoModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Memos.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
     }
 }
