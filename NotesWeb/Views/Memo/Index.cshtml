@@ -33,13 +33,54 @@
                 <td width="30%">
                     @obj.MemoCategory
                 </td>
-                <td width="55%">
+                @*<td width="55%">
+                    @DisplayShort(obj.MemoContent);
                     @obj.MemoContent
+                </td>*@
+                <td width="55%">
+                    @DisplayShort(obj.MemoContent)
                 </td>
-                <td widht="15%">
+                <td width="15%">
                     @obj.MemoCreatedTime.ToString("ddd, dd MMM yyy HH':'mm")
             </tr>
         }
     </tbody>
 </table>
+
+
+
+
+@functions{
+    public object DisplayShort(string contents)
+    {
+        const int maxLength = 20;
+        if(contents.Length <= maxLength){
+            return contents;
+        }
+
+        var counter = 0;
+        var words = contents.Split(' ');
+        var contentDisplay = new List<string>();
+        //contentDisplay.Add(contents.Length.ToString());
+
+        foreach (var word in words)
+        {
+            if (counter < maxLength)
+            {
+                counter++;
+                contentDisplay.Add(word);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+
+        var displayString = String.Join(' ', contentDisplay);
+
+        Console.WriteLine(displayString);
+        return displayString;
+    }
+}
 
