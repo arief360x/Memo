@@ -2,13 +2,13 @@
 @{
     ViewData["Title"] = "Create";
 }
+@*
+<h1>Create Memo</h1>*@
 
-@*<h1>Create Memo</h1>*@
-
-<form method="post">
+<form method="post" asp-action="Edit">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h1 class="text-primary">Create Memo</h1>
+            <h1 class="text-primary">Edit Memo</h1>
             <hr />
         </div>
 
@@ -21,7 +21,7 @@
             <input asp-for="MemoContent" class="form-control" />
             <span asp-validation-for="MemoContent" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px" asp-action="Create">Create</button>
+        <button type="submit" class="btn btn-primary" style="width:150px" asp-action="Edit">Edit</button>
         <a class="btn btn-secondary" style="width:150px" asp-controller="Memo" asp-action="Index">Back to List</a>
         
     </div>

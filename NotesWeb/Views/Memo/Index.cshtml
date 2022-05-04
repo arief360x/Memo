@@ -24,6 +24,7 @@
             <th>Category</th>
             <th>Content</th>
             <th>Last Modified</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -37,11 +38,18 @@
                     @DisplayShort(obj.MemoContent);
                     @obj.MemoContent
                 </td>*@
-                <td width="55%">
+                <td width="45%">
                     @DisplayShort(obj.MemoContent)
                 </td>
                 <td width="15%">
                     @obj.MemoCreatedTime.ToString("ddd, dd MMM yyy HH':'mm")
+                </td>
+                <td>
+                    @*container for edit and delete*@
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Memo" asp-action="Edit" asp-route-id="@obj.Id">Edit</a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
@@ -53,14 +61,15 @@
 @functions{
     public object DisplayShort(string contents)
     {
-        const int maxLength = 20;
-        if(contents.Length <= maxLength){
-            return contents;
-        }
+        const int maxLength = 15;
 
         var counter = 0;
         var words = contents.Split(' ');
+        if(words.Length <= maxLength){
+            return contents;
+        }
         var contentDisplay = new List<string>();
+        contentDisplay.Add(words.Length.ToString());
         //contentDisplay.Add(contents.Length.ToString());
 
         foreach (var word in words)
