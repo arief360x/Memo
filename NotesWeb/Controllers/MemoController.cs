@@ -67,5 +67,21 @@ namespace NotesWeb.Controllers
             }
             return View(obj);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int? id)
+        {
+            var obj = _db.Memos.Find(id);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+            _db.Memos.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
