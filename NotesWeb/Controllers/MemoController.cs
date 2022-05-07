@@ -32,6 +32,7 @@ namespace NotesWeb.Controllers
             {
                 _db.Memos.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Memo is created successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -63,6 +64,7 @@ namespace NotesWeb.Controllers
             {
                 _db.Memos.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Memo has been updated successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -79,6 +81,7 @@ namespace NotesWeb.Controllers
             }
             _db.Memos.Remove(obj);
             _db.SaveChanges();
+            TempData["success"] = "Memo has been deleted successfully";
             return RedirectToAction("Index");
         }
 
